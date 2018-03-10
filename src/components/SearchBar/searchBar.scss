@@ -37,6 +37,7 @@
 		&__container {
 			position: relative;
 			width: 150px;
+			max-width: 500px;
 			padding: 0 45px 0 0;
 			margin: 20px 10px;
 			transition: 1000ms;
@@ -80,7 +81,7 @@
 			font: 800 12px systyem-ui;
 			color: #999;
 			text-align: center;
-			// opacity: 0;
+			opacity: 0;
 			cursor: pointer;
 			transition: 800ms ease-in;
 			&:hover {

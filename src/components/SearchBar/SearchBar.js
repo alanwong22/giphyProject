@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import {search} from './../../reducers/reducers';
+import { connect } from 'react-redux'
 import './searchBar.css';
 
 class SearchBar extends Component {
@@ -23,6 +26,7 @@ class SearchBar extends Component {
   onSubmit(ev) {
   	ev.preventDefault();
   	console.log("onSubmit Doing something with:", this.searchInput.value);
+  	this.props.search(this.searchInput.value);
   	this.searchInput.value = '';
   	this.searchInput.blur();
   	this.setState({isActive: '', curSearch: ''});
@@ -48,4 +52,13 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+  // count: state.counter.count,
+  // isSearching: state.counter.isSearching
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  search
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
