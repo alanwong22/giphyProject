@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import {search} from './../../reducers/reducers';
+import {search} from './../../actions/search';
 import { connect } from 'react-redux'
 import './searchBar.css';
 

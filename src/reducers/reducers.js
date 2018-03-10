@@ -1,36 +1,42 @@
-export const SEARCH_REQUESTED = 'searchBar/SEARCH_REQUESTED'
-export const SEARCH = 'searchBar/SEARCH'
-export const DECREMENT_REQUESTED = 'searchBar/DECREMENT_REQUESTED'
-export const DECREMENT = 'searchBar/DECREMENT'
+import * as SearchActions from './../constants/search'
 
 const initialState = {
-  count: 0,
-  isSearching: false,
-  isDecrementing: false
+	search: {},
+	collections: {}
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SEARCH_REQUESTED:
+    case SearchActions.SEARCH_REQUESTED:
       return {
         ...state,
-        isSearching: true,
-        searchTerm: action.searchTerm
+        search: Object.assign({}, state.search,{
+        	isSearching: true,
+        	lastSearchTerm: action.searchTerm
+        })
       }
+     case SearchActions.SEARCH_RESPONSE:
+     	const {data, pagination} = action.data;
+     	const collectionUpdate = makeDataCollection(action.searchTerm, pagination, data);
+     	return {
+     		...state,
+     		search: Object.assign({}, state.search,{
+     			isSearching: false,
+     			lastSearchResult: action.data
+     		}),
+     		collections: Object.assign({}, state.collections, collectionUpdate)
+     	}
      default:
      	return state
   }
 }
 
-export const search = (str) => {
-  return dispatch => {
-    dispatch({
-      type: SEARCH_REQUESTED,
-      searchTerm: str
-    })
-
-    // dispatch({
-    //   type: SEARCH
-    // })
-  }
+// CONVERT SEARCH RESULTS INTO A COLLECTION
+function makeDataCollection(term, pagination, data) {
+	let updatedCollection = {};
+	updatedCollection[term] = {};
+	data.map((item,index) => {
+		updatedCollection[term][pagination.offset+index] = item;
+	})
+	return updatedCollection;
 }
