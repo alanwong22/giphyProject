@@ -11,6 +11,7 @@
 		background-color: rgba(0,0,0,.4);
 		.search {
 			&__container {
+				width: 50%;
 				label {
 					top: 30px;
 					font: 400 10px system-ui;
@@ -21,7 +22,6 @@
 				}
 			}
 			&__submit {
-				right: 0;
 				opacity: 1;
 			}
 		}
@@ -36,9 +36,10 @@
 		}
 		&__container {
 			position: relative;
+			width: 150px;
 			padding: 0 45px 0 0;
 			margin: 20px 10px;
-			transition: 1000ms ease;
+			transition: 1000ms;
 
 			label {
 				position: absolute;
@@ -70,7 +71,7 @@
 		&__submit {
 			position: absolute;
 			bottom: 2px;
-			right: -10px;
+			right: 0px;
 			width: 40px;
 			height: 18px;
 			padding: 5px 0 0;
@@ -79,7 +80,7 @@
 			font: 800 12px systyem-ui;
 			color: #999;
 			text-align: center;
-			opacity: 0;
+			// opacity: 0;
 			cursor: pointer;
 			transition: 800ms ease-in;
 			&:hover {
