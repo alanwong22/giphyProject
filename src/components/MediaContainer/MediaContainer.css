@@ -1,0 +1,32 @@
+.mediaContainer {
+  position: relative;
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .mediaContainer .imgWrapper {
+    width: 20%;
+    min-width: 200px;
+    height: 150px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%; }
+    .mediaContainer .imgWrapper:hover {
+      background-size: contain; }
+
+@media (max-width: 1100px) {
+  .mediaContainer .imgWrapper {
+    width: 25%; } }
+
+@media (max-width: 855px) {
+  .mediaContainer .imgWrapper {
+    width: 33%; } }
+
+@media (max-width: 655px) {
+  .mediaContainer .imgWrapper {
+    width: 50%; } }
+
+@media (max-width: 455px) {
+  .mediaContainer .imgWrapper {
+    width: 100%; } }

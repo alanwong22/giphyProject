@@ -1,0 +1,18 @@
+.pagination {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  font: 800 20px system-ui;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  background-color: #000; }
+  .pagination .pageNext,
+  .pagination .pagePrev {
+    cursor: pointer;
+    padding: 0 20px;
+    transition: 500ms ease; }
+    .pagination .pageNext:hover,
+    .pagination .pagePrev:hover {
+      color: #FC4107; }
