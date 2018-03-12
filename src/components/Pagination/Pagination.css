@@ -8,11 +8,9 @@
   justify-content: space-between;
   color: #999;
   background-color: #000; }
-  .pagination .pageNext,
-  .pagination .pagePrev {
+  .pagination .page__next, .pagination .page__prev {
     cursor: pointer;
     padding: 0 20px;
     transition: 500ms ease; }
-    .pagination .pageNext:hover,
-    .pagination .pagePrev:hover {
+    .pagination .page__next:hover, .pagination .page__prev:hover {
       color: #FC4107; }

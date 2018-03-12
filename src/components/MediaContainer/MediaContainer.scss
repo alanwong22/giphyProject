@@ -4,23 +4,57 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	.imgWrapper {
-		width: 20%;
-		min-width: 200px;
-		height: 150px;
-		display: inline-block;
-		background-repeat: no-repeat;
-		background-size: cover;
-    background-position: 50% 50%;
-    &:hover {
-    	background-size: contain;
-    }
+	background-color: #000;
+	.img {
+		&__wrapper {
+			position: relative;
+			width: 20%;
+			min-width: 200px;
+			height: 150px;
+			display: inline-block;
+			background-repeat: no-repeat;
+			background-size: cover;
+	    background-position: 50% 50%;
+	    overflow: hidden;
+	    &:hover {
+	    	background-size: contain;
+	    	.img__info {
+	    		bottom: 0;
+	    	}
+	    }
+	    &.copied {
+	    	&::after {
+	    		content: "COPIED";
+	    		position: absolute;
+	    		bottom: 4px;
+	    		right: 5px;
+	    		font: 800 12px system-ui;
+	    		color: #FFF;
+	    	}
+	    }
+	  }
+	  &__info {
+	  	position: absolute;
+	  	bottom: -100%;
+	  	width: 100%;
+	  	padding: 5px;
+	  	font: 800 10px system-ui;
+	  	opacity: .8;
+	  	background-color: #000;
+	  	color: #FFF;
+	  	transition: 500ms ease;
+	  	border: none;
+	  	&:focus {
+	  		outline: none;
+	  	}
+
+	  }
 	}
 }
 
 @media (max-width: 1100px) {
 	.mediaContainer {
-		.imgWrapper {
+		.img__wrapper {
 			width: 25%;
 		}
 	}
@@ -28,7 +62,7 @@
 
 @media (max-width: 855px) {
 	.mediaContainer {
-		.imgWrapper {
+		.img__wrapper {
 			width: 33%;
 		}
 	}
@@ -36,7 +70,7 @@
 
 @media (max-width: 655px) {
 	.mediaContainer {
-		.imgWrapper {
+		.img__wrapper {
 			width: 50%;
 		}
 	}
@@ -44,7 +78,7 @@
 
 @media (max-width: 455px) {
 	.mediaContainer {
-		.imgWrapper {
+		.img__wrapper {
 			width: 100%;
 		}
 	}

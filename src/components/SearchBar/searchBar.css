@@ -12,7 +12,7 @@
   .searchBar.active {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); }
+    background-color: rgba(0, 0, 0, 0.95); }
     .searchBar.active .search__wrapper {
       justify-content: center; }
     .searchBar.active .search__container {
@@ -27,8 +27,12 @@
       .searchBar.active .search__container::before {
         height: 1px;
         bottom: -3px; }
-    .searchBar.active .search__submit {
+    .searchBar.active .search__button {
       display: block; }
+    .searchBar.active .search__history {
+      right: 20px; }
+    .searchBar.active .search__current {
+      display: none; }
   .searchBar .search__wrapper {
     position: relative;
     top: 0;
@@ -70,13 +74,12 @@
       width: 100%;
       height: 0;
       background-color: #888; }
-  .searchBar .search__submit {
+  .searchBar .search__button {
     position: absolute;
     bottom: 2px;
     right: 0px;
-    width: 40px;
     height: 25px;
-    padding: 5px 0 0;
+    padding: 4px 10px 1px;
     border: thin solid #999;
     border-radius: 4px;
     font: 800 20px system-ui;
@@ -84,19 +87,46 @@
     text-align: center;
     display: none;
     cursor: pointer;
-    transition: 800ms ease-in; }
-    .searchBar .search__submit:hover {
+    transition: 500ms ease-in; }
+    .searchBar .search__button:hover {
       color: #FFF;
       border: thin solid #FFF;
       background-color: #FC4107;
       transition: 300ms ease; }
-  .searchBar .curSearchTerm {
+    .searchBar .search__button.cancel {
+      bottom: -39px; }
+      .searchBar .search__button.cancel:hover {
+        color: #000;
+        border: thin solid #000;
+        background-color: #FFF;
+        transition: 300ms ease; }
+  .searchBar .search__history {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    transition: 1000ms ease;
+    text-align: right; }
+  .searchBar .search__rerun {
+    font: 800 40px system-ui;
+    line-height: 1.25;
+    color: #444;
+    opacity: 0.5;
+    transition: 500ms ease;
+    cursor: pointer; }
+    .searchBar .search__rerun:hover {
+      color: #FC4107;
+      opacity: 1; }
+  .searchBar .search__label {
+    font: 800 40px system-ui;
+    opacity: 1;
+    color: #888; }
+  .searchBar .search__current {
     position: absolute;
     bottom: 4px;
     left: 20px;
     font: 800 50px system-ui;
     color: #FFF; }
-    .searchBar .curSearchTerm span {
+    .searchBar .search__current span {
       color: #FC4107; }
 
 @media (max-width: 1100px) {

@@ -1,0 +1,144 @@
+/*
+    Basic rules:
+    http://eslint.org/docs/rules/
+
+    React rules:
+    dependency: eslint-plugin-react
+    https://www.npmjs.com/package/eslint-plugin-react
+*/
+
+{
+	"plugins": [
+		"react"
+	],
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true,
+    "mockStore": true,
+    "mockResolved": true,
+    "mockRejected": true,
+    "mockFetch": true
+  },
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true,
+		"commonjs": true,
+		"jest": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true,
+			"jsx": true
+		}
+	},
+	"extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+	],
+	"rules": {
+    "strict": [
+      "error",
+      "function"
+    ],
+    "block-scoped-var": "error",
+    "brace-style": [
+      "error",
+      "1tbs"
+    ],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "curly": "error",
+    "eqeqeq": "error",
+    "class-methods-use-this": 0,
+    "guard-for-in": "error",
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "tabWidth": 2
+      }
+    ],
+    "max-nested-callbacks": [
+      "error",
+      {
+        "max": 2
+      }
+    ],
+    "max-statements-per-line": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    "new-cap": [
+      "error",
+      {
+        "newIsCap": true
+      }
+    ],
+    "newline-per-chained-call": [
+      "error",
+      {
+       "ignoreChainWithDepth": 2
+      }
+    ],
+    "no-undef": "error",
+    "no-underscore-dangle": 0,
+    "no-alert": "error",
+    "no-else-return": "error",
+    "no-eq-null": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-extend-native": "error",
+    "no-floating-decimal": "error",
+    "no-global-assign": "error",
+    "no-implicit-globals": "error",
+    "no-inline-comments": "off",
+    "no-loop-func": "error",
+    "no-multi-spaces": "error",
+    "no-nested-ternary": "error",
+    "no-unneeded-ternary": "error",
+    "no-use-before-define": "error",
+    "no-useless-concat": "error",
+    "no-useless-return": "error",
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "no-extra-boolean-cast": "off",
+    "one-var": [
+      "error",
+      "never"
+    ],
+    "no-plusplus": "error",
+    "semi-spacing": "error",
+    "vars-on-top": "error",
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+		"react/jsx-uses-react": "error",
+		"react/jsx-key": "error",
+    "react/jsx-uses-vars": "error",
+    "react/forbid-prop-types": 0,
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": true,
+        "assignment": true,
+        "arrow": true,
+        "return": true
+      }],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "yoda": "error"
+	}
+}

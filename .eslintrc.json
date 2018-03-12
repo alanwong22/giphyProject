@@ -1,0 +1,145 @@
+/*
+    Basic rules:
+    http://eslint.org/docs/rules/
+
+    React rules:
+    dependency: eslint-plugin-react
+    https://www.npmjs.com/package/eslint-plugin-react
+
+    //todo: this is a WIP. Add/Remove as you fight your editor
+
+    "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+
+*/
+
+{
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "commonjs": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "strict": [
+      "warn",
+      "function"
+    ],
+    "block-scoped-var": "warn",
+    "brace-style": [
+      "warn",
+      "1tbs"
+    ],
+    "camelcase": 0,
+    "curly": "warn",
+    "eqeqeq": "warn",
+    "class-methods-use-this": 0,
+    "guard-for-in": "warn",
+    "max-len": [
+      "warn",
+      {
+        "code": 100,
+        "tabWidth": 2
+      }
+    ],
+    "max-nested-callbacks": [
+      "warn",
+      {
+        "max": 2
+      }
+    ],
+    "max-statements-per-line": [
+      "warn",
+      {
+        "max": 1
+      }
+    ],
+    "new-cap": [
+      "warn",
+      {
+        "newIsCap": true
+      }
+    ],
+    "newline-per-chained-call": [
+      "warn",
+      {
+       "ignoreChainWithDepth": 2
+      }
+    ],
+    "no-undef": "warn",
+    "no-underscore-dangle": 0,
+    "no-alert": "warn",
+    "no-else-return": "warn",
+    "no-eq-null": "warn",
+    "no-eval": "warn",
+    "no-implied-eval": "warn",
+    "no-extend-native": "warn",
+    "no-floating-decimal": "warn",
+    "no-global-assign": "warn",
+    "no-implicit-globals": "warn",
+    "no-inline-comments": "off",
+    "no-loop-func": "warn",
+    "no-multi-spaces": "warn",
+    "no-nested-ternary": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-use-before-define": "warn",
+    "no-useless-concat": "warn",
+    "no-useless-return": "warn",
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "no-extra-boolean-cast": "off",
+    "one-var": [
+      "warn",
+      "never"
+    ],
+    "no-plusplus": [
+      "warn",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "semi-spacing": "warn",
+    "vars-on-top": "warn",
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ],
+    "react/jsx-uses-react": "warn",
+    "react/jsx-key": "warn",
+    "react/jsx-uses-vars": "warn",
+    "react/forbid-prop-types": 0,
+    "react/jsx-wrap-multilines": [
+      "warn",
+      {
+        "declaration": true,
+        "assignment": true,
+        "arrow": true,
+        "return": true
+      }],
+    "semi": [
+      "warn",
+      "always"
+    ],
+    "yoda": "warn"
+  }
+}

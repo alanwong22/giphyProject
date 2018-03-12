@@ -3,30 +3,55 @@
   padding: 60px 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; }
-  .mediaContainer .imgWrapper {
+  justify-content: space-between;
+  background-color: #000; }
+  .mediaContainer .img__wrapper {
+    position: relative;
     width: 20%;
     min-width: 200px;
     height: 150px;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50% 50%; }
-    .mediaContainer .imgWrapper:hover {
+    background-position: 50% 50%;
+    overflow: hidden; }
+    .mediaContainer .img__wrapper:hover {
       background-size: contain; }
+      .mediaContainer .img__wrapper:hover .img__info {
+        bottom: 0; }
+    .mediaContainer .img__wrapper.copied::after {
+      content: "COPIED";
+      position: absolute;
+      bottom: 4px;
+      right: 5px;
+      font: 800 12px system-ui;
+      color: #FFF; }
+  .mediaContainer .img__info {
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    padding: 5px;
+    font: 800 10px system-ui;
+    opacity: .8;
+    background-color: #000;
+    color: #FFF;
+    transition: 500ms ease;
+    border: none; }
+    .mediaContainer .img__info:focus {
+      outline: none; }
 
 @media (max-width: 1100px) {
-  .mediaContainer .imgWrapper {
+  .mediaContainer .img__wrapper {
     width: 25%; } }
 
 @media (max-width: 855px) {
-  .mediaContainer .imgWrapper {
+  .mediaContainer .img__wrapper {
     width: 33%; } }
 
 @media (max-width: 655px) {
-  .mediaContainer .imgWrapper {
+  .mediaContainer .img__wrapper {
     width: 50%; } }
 
 @media (max-width: 455px) {
-  .mediaContainer .imgWrapper {
+  .mediaContainer .img__wrapper {
     width: 100%; } }

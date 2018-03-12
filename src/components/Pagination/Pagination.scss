@@ -8,13 +8,15 @@
 	justify-content: space-between;
 	color: #999;
 	background-color: #000;
-	.pageNext,
-	.pagePrev {
+	.page {
+		&__next,
+		&__prev {
 		cursor: pointer;
     padding: 0 20px;
     transition: 500ms ease;
-    &:hover {
-    	color: #FC4107;
-    }
+	    &:hover {
+	    	color: #FC4107;
+	    }
+	  }
 	}
 }
