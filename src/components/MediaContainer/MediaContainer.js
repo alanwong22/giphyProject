@@ -14,7 +14,10 @@ class MediaContainer extends Component {
 			copied: -1
 		};
 	}
-
+	
+	componentDidUpdate(prevProps, prevState) {
+		console.log("MediaContainer componentDidUpdate");
+	}
 	onCopy(e) {
 		e.target.select();
 		setTimeout((e) => {
@@ -23,6 +26,37 @@ class MediaContainer extends Component {
 		document.execCommand("Copy");
 		this.setState({copied: e.target.parentNode.dataset.key});
 	}
+	
+// 	isElementInViewport (el) {
+
+//     //special bonus for those using jQuery
+//     // if (typeof jQuery === "function" && el instanceof jQuery) {
+//     //     el = el[0];
+//     // }
+
+//     var rect = el.getBoundingClientRect();
+
+//     return (
+//         rect.top >= 0 &&
+//         rect.left >= 0 &&
+// 				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+// 				rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+//     );
+// }
+
+// 	onVisibilityChange(el, callback) {
+//     var old_visible;
+//     return function () {
+//         var visible = this.isElementInViewport(el);
+//         if (visible !== old_visible) {
+//             old_visible = visible;
+//             if (typeof callback === 'function') {
+//                 callback();
+//             }
+//         }
+//     };
+// }
+
 
 	makeDisplay() {
 		const {searchResultData, offset, count} = this.props;
@@ -52,6 +86,9 @@ class MediaContainer extends Component {
 	render() {
 		return (
 			<div className="mediaContainer">
+				{this.props.count === 0 && 
+					<div className="oops">NO RESULTS</div>
+				}
 				{this.makeDisplay()}
 			</div>
 		);

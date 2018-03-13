@@ -8,6 +8,9 @@
 	justify-content: space-between;
 	color: #999;
 	background-color: #000;
+	&.hide {
+		bottom: -20%;
+	}
 	.page {
 		&__next,
 		&__prev {

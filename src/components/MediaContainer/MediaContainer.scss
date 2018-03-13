@@ -1,5 +1,7 @@
 .mediaContainer{
 	position: relative;
+	min-width: 100%;
+	min-height: 100%;
 	padding: 60px 20px;
 	display: flex;
 	flex-wrap: wrap;
@@ -10,7 +12,7 @@
 			position: relative;
 			width: 20%;
 			min-width: 200px;
-			height: 150px;
+			height: 200px;
 			display: inline-block;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -20,6 +22,7 @@
 	    	background-size: contain;
 	    	.img__info {
 	    		bottom: 0;
+	    		cursor: pointer;
 	    	}
 	    }
 	    &.copied {
@@ -49,6 +52,16 @@
 	  	}
 
 	  }
+	}
+	.oops {
+		position: relative;
+		width: 100%;
+		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font: 800 40px system-ui;
+		color: #FFF;
 	}
 }
 

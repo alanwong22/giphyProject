@@ -1,3 +1,5 @@
+$orange: #FC4107;
+
 .searchBar {
 	position: fixed;
 	top: 0;
@@ -12,14 +14,14 @@
 	&.active {
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0,0,0,.95);
+		background-color: rgba(0,0,0,.85);
 		.search {
 			&__wrapper {
 				justify-content: center;
 			}
 			&__container {
 				width: 50%;
-				padding: 0 45px 0 0;
+				padding: 0 65px 0 0;
 				border: none;
 				label {
 					top: 55px;
@@ -54,6 +56,7 @@
 		}
 		&__container {
 			position: relative;
+			right: 10px;
 			width: 270px;
 			max-width: 500px;
 			padding: 0;
@@ -110,7 +113,7 @@
 			&:hover {
 				color: #FFF;
 				border: thin solid #FFF;
-				background-color: #FC4107;
+				background-color: $orange;
 				transition: 300ms ease;
 			}
 
@@ -139,7 +142,7 @@
 			transition: 500ms ease;
 			cursor: pointer;
 			&:hover {
-				color: #FC4107;
+				color: $orange;
 				opacity: 1;
 			}
 		}
@@ -155,7 +158,64 @@
 			font: 800 50px system-ui;
 			color: #FFF;
 			span {
-				color: #FC4107;
+				color: $orange;
+			}
+		}
+		&__rating {
+			position: relative;
+			min-width: 50px;
+			&.open {
+				.search__rating {
+					position: absolute;
+					&__selection {
+						position: absolute;
+						min-width: 50px;
+					}
+					&__option {
+						position: relative;
+						display: block;
+						opacity: 1;
+					}
+				}
+			}
+			&__selection {
+				position: relative;
+				top: 5px;
+				right: 0px;
+				padding: 6px 13px;
+				font: 800 25px system-ui;
+				color: #666;
+				border: 5px solid #666;
+				border-radius: 10px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				cursor: pointer;
+				background-color: #333;
+				transition: 500ms ease;
+		    white-space: nowrap;
+				// &.open {
+				// 	.search__rating__option {
+				// 		position: relative;
+				// 		display: block;
+				// 		opacity: 1;
+				// 	}
+				// }
+			}
+			&__option {
+				position: absolute;
+				top: 0;
+				opacity: 0;
+				// transition: 500ms ease;
+				&.selected {
+					position: relative;
+					opacity: 1;
+					color: $orange;
+					z-index: 1;
+				}
+			}
+			&__selected {
+				display: none;
 			}
 		}
 	}
@@ -174,9 +234,17 @@
 	.searchBar {
 		height: 90px;
 		flex-direction: column;
-		.search__wrapper {
-			right: 0;
-			justify-content: center;
+		.search {
+			&__wrapper {
+				right: 0;
+				justify-content: center;
+			}
+			&__current {
+				position: relative;
+				top: 0;
+				left: 0;
+				font-size: 30px;
+			}
 		}
 		.curSearchTerm {
 			position: relative;

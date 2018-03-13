@@ -1,18 +1,39 @@
 import axios from 'axios';
 import * as SearchActions from './../constants/search';
 
-export const search = (str, offset = 0) => {
+export const getTrending = (str, offset = 0) => {
+  return dispatch => {
+    dispatch({
+      type: SearchActions.SEARCH_REQUESTED,
+      searchTerm: "Trending"
+    });
+    const _trendingURL = `https://api.giphy.com/v1/gifs/trending
+													?api_key=Uyc7IBfB4ZBg13fkIN1YyzBKn23h53nU
+													&offset=${offset}
+													&limit=25
+													&rating=G`;
+    axios.get(_trendingURL)
+    .then(res => {
+      dispatch({
+        type: SearchActions.SEARCH_RESPONSE,
+        data: res.data,
+        searchTerm: "Trending"
+      });
+    });
+  };
+};
+
+export const search = (str, offset = 0, rating = 'G') => {
   return dispatch => {
     dispatch({
       type: SearchActions.SEARCH_REQUESTED,
       searchTerm: str
     });
-
 		const _getURL = `https://api.giphy.com/v1/gifs/search
 											?api_key=Uyc7IBfB4ZBg13fkIN1YyzBKn23h53nU
 											&limit=25
 											&offset=${offset}
-											&rating=G
+											&rating=${rating}
 											&lang=en
 											&q=${str}`;
 		axios.get(_getURL)
@@ -23,23 +44,6 @@ export const search = (str, offset = 0) => {
         searchTerm: str
       });
     });
-    
-  };
-};
 
-export const getTrending = () => {
-	return dispatch => {
-		dispatch({
-      type: SearchActions.SEARCH_REQUESTED,
-      searchTerm: "Trending"
-    });
-		axios.get('https://api.giphy.com/v1/gifs/trending?api_key=Uyc7IBfB4ZBg13fkIN1YyzBKn23h53nU&limit=25&rating=G')
-		.then(res => {
-			dispatch({
-				type: SearchActions.SEARCH_RESPONSE,
-				data: res.data,
-				searchTerm: "Trending"
-			});
-		});
-	};
+  };
 };
