@@ -31,7 +31,7 @@
       display: block; }
     .searchBar.active .search__history {
       right: 20px; }
-    .searchBar.active .search__current {
+    .searchBar.active .search__rating, .searchBar.active .search__current {
       display: none; }
   .searchBar .search__wrapper {
     position: relative;

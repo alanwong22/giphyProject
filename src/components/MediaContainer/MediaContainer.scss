@@ -2,11 +2,13 @@
 	position: relative;
 	min-width: 100%;
 	min-height: 100%;
-	padding: 60px 20px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	background-color: #000;
+	padding: 60px 0;
+	overflow-y: scroll;
+	// display: flex;
+	// flex-wrap: wrap;
+	// justify-content: space-between;
+	// background-color: #000;
+	transition: 500ms ease;
 	.img {
 		&__wrapper {
 			position: relative;
@@ -56,12 +58,10 @@
 	.oops {
 		position: relative;
 		width: 100%;
-		
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		padding: 20% 0 0;
+		text-align: center;
 		font: 800 40px system-ui;
-		color: #FFF;
+		color: #333;
 	}
 }
 

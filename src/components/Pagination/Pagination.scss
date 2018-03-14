@@ -13,7 +13,9 @@
 	}
 	.page {
 		&__next,
-		&__prev {
+		&__prev,
+		&__show__all {
+		display: inline-block;
 		cursor: pointer;
     padding: 0 20px;
     transition: 500ms ease;
@@ -21,5 +23,15 @@
 	    	color: #FC4107;
 	    }
 	  }
+	}
+
+	&.page__all {
+		justify-content: center;
+		.page {
+			&__next,
+			&__prev {
+				display: none;
+			}
+		}
 	}
 }

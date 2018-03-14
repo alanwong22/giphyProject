@@ -51,7 +51,10 @@
       "1tbs"
     ],
     "camelcase": 0,
-    "curly": "warn",
+    "curly": [
+      "warn",
+      "multi-line"
+    ],
     "eqeqeq": "warn",
     "class-methods-use-this": 0,
     "guard-for-in": "warn",

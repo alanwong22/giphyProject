@@ -1,4 +1,5 @@
 import * as SearchActions from './../constants/search';
+import * as PaginationActions from './../constants/paginate';
 
 const initialState = {
 	search: {
@@ -6,10 +7,12 @@ const initialState = {
 		history: [],
 		pagination: {}
 	},
-	collections: {}
+	collections: {},
+	trending: {},
+	hasPagination: true
 };
 
-// CONVERT SEARCH RESULTS INTO A COLLECTION
+// UPDATE A COLLECTION
 function makeDataCollection(term, pagination, data, stateCollection) {
 	let updatedCollection = {};
 	updatedCollection[term] = stateCollection[term] || {};
@@ -26,7 +29,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SearchActions.SEARCH_REQUESTED: {
 			let history = state.search.history.slice();
-			if(action.searchTerm !== history[0] && action.searchTerm !== "Trending") {
+			// DON'T INCLUDE T
+			if(action.searchTerm !== history[0] && action.searchTerm) {
 				history.unshift(action.searchTerm);
 			}
       return {
@@ -34,6 +38,7 @@ export default (state = initialState, action) => {
         search: Object.assign({}, state.search,{
 					isSearching: true,
 					lastSearchTerm: action.searchTerm,
+					onTrending: action.onTrending,
 					history: history
         })
       };
@@ -43,7 +48,6 @@ export default (state = initialState, action) => {
 			const collectionUpdate = makeDataCollection(action.searchTerm,
 																									pagination, data, 
 																									state.collections);
-
 			return {
 				...state,
 				search: Object.assign({}, state.search,{
@@ -51,6 +55,26 @@ export default (state = initialState, action) => {
 					pagination
 				}),
 				collections: Object.assign(state.collections, collectionUpdate)
+			};
+		}
+		case SearchActions.TRENDING_RESPONSE: {
+			const {data, pagination} = action.data;
+			const collectionUpdate = makeDataCollection("trending",
+																									pagination, data, 
+																									state.collections);
+			return {
+				...state,
+				search: Object.assign({}, state.search,{
+					isSearching: false,
+					pagination
+				}),
+				trending: Object.assign(state.trending, collectionUpdate.trending)
+			};
+		}
+		case PaginationActions.SHOWALL_REQUEST: {
+			return {
+				...state,
+				hasPagination: action.paginate
 			};
 		}
    default:

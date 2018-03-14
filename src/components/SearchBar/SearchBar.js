@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { search, getTrending } from './../../actions/search';
+import { search } from './../../actions/search';
 import { connect } from 'react-redux';
 import './searchBar.css';
 
@@ -21,10 +21,6 @@ class SearchBar extends Component {
     // this.handleRating = this.handleRating.bind(this);
 	}
 
-	componentDidMount() {
-		this.props.getTrending();
-	}
-
   onFocus() {
     this.searchInput.value = this.state.curSearch;
     this.setState({isActive: 'active'});
@@ -35,10 +31,12 @@ class SearchBar extends Component {
   }
   onSubmit(ev) {
 		ev.preventDefault();
-		this.props.search(this.searchInput.value, 0, this.state.curRating);
-		this.searchInput.value = '';
-		this.searchInput.blur();
-		this.setState({isActive: '', curSearch: ''});
+    if(this.searchInput.value) {
+      this.props.search(this.searchInput.value, 0, this.state.curRating);
+      this.searchInput.value = '';
+      this.searchInput.blur();
+      this.setState({isActive: '', curSearch: ''});
+    }
   }
   handleRating = (el) => {
     const _rating = el.currentTarget.innerText;
@@ -50,6 +48,8 @@ class SearchBar extends Component {
   }
   render() {
 		const { isActive, ratings, curRating, openRatings } = this.state;
+    let curSubject = 'Trending';
+    if(this.props.lastSearchTerm) curSubject = `"${this.props.lastSearchTerm}"`;
     return (
       <div className={`searchBar ${isActive}`}>
 				<div className="search__history">
@@ -90,7 +90,7 @@ class SearchBar extends Component {
           </div>
         </div>
 				<div className="search__current">
-					&quot;<span>{this.props.lastSearchTerm || 'Trending'}</span>&quot;
+					<span>{curSubject}</span>
 				</div>
       </div>
     );
@@ -103,8 +103,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  search,
-  getTrending
+  search
 }, dispatch);
 
 SearchBar.defaultProps = {
@@ -114,8 +113,7 @@ SearchBar.defaultProps = {
 SearchBar.propTypes = {
   lastSearchTerm: PropTypes.string,
   history: PropTypes.array,
-  search: PropTypes.func,
-  getTrending: PropTypes.func
+  search: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

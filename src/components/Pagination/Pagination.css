@@ -10,9 +10,14 @@
   background-color: #000; }
   .pagination.hide {
     bottom: -20%; }
-  .pagination .page__next, .pagination .page__prev {
+  .pagination .page__next, .pagination .page__prev, .pagination .page__show__all {
+    display: inline-block;
     cursor: pointer;
     padding: 0 20px;
     transition: 500ms ease; }
-    .pagination .page__next:hover, .pagination .page__prev:hover {
+    .pagination .page__next:hover, .pagination .page__prev:hover, .pagination .page__show__all:hover {
       color: #FC4107; }
+  .pagination.page__all {
+    justify-content: center; }
+    .pagination.page__all .page__next, .pagination.page__all .page__prev {
+      display: none; }
