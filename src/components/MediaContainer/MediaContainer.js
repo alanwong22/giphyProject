@@ -17,7 +17,7 @@ class MediaContainer extends Component {
 			topLimit: -1,
       bottomLimit: 50
 		};
-		// this.interval;
+
 		this.isScrolling = false;
 		this.onScroll = this.onScroll.bind(this);
 	}

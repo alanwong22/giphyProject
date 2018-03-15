@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { search } from './../../actions/search';
@@ -18,7 +19,6 @@ class SearchBar extends Component {
 		this.onFocus = this.onFocus.bind(this);
 		this.onClose = this.onClose.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
-    // this.handleRating = this.handleRating.bind(this);
 	}
 
   onFocus() {
@@ -79,6 +79,7 @@ class SearchBar extends Component {
                    onMouseDown={this.onSubmit}>GO</div>
             </form>
           </div>
+
           <div className={`search__rating ${openRatings ? 'open' : ''}`}>
             <div className={`search__rating__selection`}>
               {ratings.map(rating => (
@@ -88,6 +89,9 @@ class SearchBar extends Component {
               ))}
             </div>
           </div>
+
+          <Link to="/gif" className="search__info">?</Link>
+          
         </div>
 				<div className="search__current">
 					<span>{curSubject}</span>
