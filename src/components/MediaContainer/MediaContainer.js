@@ -13,26 +13,29 @@ class MediaContainer extends Component {
 		this.onCopy = this.onCopy.bind(this);
 		this.state = {
 			resultData: props.searchResultData,
-			copied: -1
+			copied: -1,
+			topLimit: -1,
+      bottomLimit: 50
 		};
 		// this.interval;
 		this.isScrolling = false;
-		this.loadMore = this.loadMore.bind(this);
+		this.onScroll = this.onScroll.bind(this);
 	}
 	
 	componentDidUpdate(prevProps, prevState) {
-		console.log("componentDidUpdate", this.mediaContainer.scrollTop);
-		this.mediaContainer.scrollTop += 50;
-		console.log(this.mediaContainer.scrollTop);
+		// IF GOING FROM PAGINATION TO INFINITE SCROLL, LOAD MORE
+		if(prevProps.hasPagination && prevProps.hasPagination !== this.props.hasPagination) {
+			this.onScroll();
+		}
 		this.isScrolling = false;
 	}
 
 	componentDidMount() {
 		this.props.search();
-		document.addEventListener("scroll", this.loadMore);
+		document.addEventListener("scroll", this.onScroll);
 	}
 	componentWillUnmount() {
-		document.removeEventListener("scroll", this.loadMore);
+		document.removeEventListener("scroll", this.onScroll);
 	}
 
 	// COPY URL LINK TO CLIP BOARD
@@ -52,7 +55,7 @@ class MediaContainer extends Component {
 		return (
 			displayKeys.map((key, i) => {
 					const imgSize = searchResultData[key].images.fixed_height;
-					const styleObj = { "backgroundImage": `url(${imgSize.url})`};
+					const styleObj = { "backgroundImage": `url(${i > this.state.topLimit && i < this.state.bottomLimit ? imgSize.url : ''})`};
 					const beenCopied = this.state.copied === key ? 'copied' : '';
 					return (<div className={`img__wrapper ${beenCopied}`}
 												style={styleObj}
@@ -69,14 +72,28 @@ class MediaContainer extends Component {
 				}));
 	}
 	
-	loadMore() {
-		// Limit is 100px before the bottom
+	onScroll() {
+		// DEBOUNCE FOR SCROLLING OPTIMIZATION
+		if(this.scrollInterval) clearInterval(this.scrollInterval);
+		this.scrollInterval = setTimeout(() => {
+			const rowsScrolled = Math.floor(window.scrollY/200);
+			const perRow = window.innerWidth < 455 ? 1 :
+                     window.innerWidth < 655 ? 2 :
+                     window.innerWidth < 855 ? 3 :
+                     window.innerWidth < 1100 ? 4
+                                              : 5;
+			// IMAGES WITH A HIGHER INDEX THAN TOPLIMIT ARE VISIBLE
+			const topLimit = (rowsScrolled - 5) * perRow;
+			// IMAGES WITH A LOWER INDEX THAN BOTTOMLIMIT ARE VISIBLE
+			const bottomLimit = (rowsScrolled + 10) * perRow;
+			this.setState({topLimit, bottomLimit});
+		}, 200);
+
+		// LOAD MORE IMAGES WHEN 100px FROM THE BOTTOM
 		const { search, count, offset, rating, lastSearchTerm, hasPagination } = this.props;
 		const scrollLimit = this.mediaContainer.clientHeight - window.innerHeight - 100;
-		// console.log("loadMore", window.scrollY, scrollLimit, "||" ,window.innerHeight, this.mediaContainer.clientHeight);
 		if(window.scrollY > scrollLimit && !this.isScrolling && !hasPagination) {
 			this.isScrolling = true;
-			console.log("HIT THE LIMIT");
 			search(lastSearchTerm, offset+count, rating);
 		}
 	}

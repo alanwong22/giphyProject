@@ -175,7 +175,7 @@
 
 @media (max-width: 855px) {
   .searchBar {
-    height: 90px;
+    height: 70px;
     flex-direction: column; }
     .searchBar .search__wrapper {
       right: 0;
@@ -184,7 +184,20 @@
       position: relative;
       top: 0;
       left: 0;
-      font-size: 30px; }
+      font-size: 20px;
+      padding: 5px 0 0; }
+    .searchBar .search__container {
+      height: 31px; }
+      .searchBar .search__container label,
+      .searchBar .search__container input {
+        font-size: 20px; }
+    .searchBar .search__rating {
+      min-width: 30px; }
+      .searchBar .search__rating__selection {
+        padding: 1px 6px;
+        font: 800 20px system-ui;
+        border: 4px solid #666;
+        border-radius: 7px; }
     .searchBar .curSearchTerm {
       position: relative;
       top: 3px;

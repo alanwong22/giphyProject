@@ -6,7 +6,6 @@ import App from './components/App/App';
 import './index.css';
 
 import configStore from './store';
-// import registerServiceWorker from './registerServiceWorker';
 
 const store = configStore();
 
@@ -17,4 +16,3 @@ ReactDOM.render((
 		</BrowserRouter>
 	</Provider>
 ), document.getElementById('root'));
-// registerServiceWorker();

@@ -12,11 +12,10 @@ const initialState = {
 	hasPagination: true
 };
 
-// UPDATE A COLLECTION
+// ADD RESPONSE TO APPROPRIATE COLLECTION
 function makeDataCollection(term, pagination, data, stateCollection) {
 	let updatedCollection = {};
 	updatedCollection[term] = stateCollection[term] || {};
-	// updatedCollection[term] = {};
 	data.map((item,index) => {
 		updatedCollection[term][pagination.offset+index] = item;
 		return null;
@@ -29,7 +28,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SearchActions.SEARCH_REQUESTED: {
 			let history = state.search.history.slice();
-			// DON'T INCLUDE T
+			// DON'T INCLUDE DUPLICATE OR BLANK SEARCH TERMS 
 			if(action.searchTerm !== history[0] && action.searchTerm) {
 				history.unshift(action.searchTerm);
 			}
@@ -69,6 +68,19 @@ export default (state = initialState, action) => {
 					pagination
 				}),
 				trending: Object.assign(state.trending, collectionUpdate.trending)
+			};
+		}
+		case SearchActions.SEARCH_ERROR: {
+			return {
+				...state,
+				search: Object.assign({}, state.search,{
+					isSearching: false,
+					pagination: {
+						total_count: 0,
+						count: 0,
+						offset: 0
+					}
+				})
 			};
 		}
 		case PaginationActions.SHOWALL_REQUEST: {

@@ -233,7 +233,7 @@ $orange: #FC4107;
 
 @media (max-width: 855px) {
 	.searchBar {
-		height: 90px;
+		height: 70px;
 		flex-direction: column;
 		.search {
 			&__wrapper {
@@ -244,7 +244,24 @@ $orange: #FC4107;
 				position: relative;
 				top: 0;
 				left: 0;
-				font-size: 30px;
+				font-size: 20px;
+				padding: 5px 0 0;
+			}
+			&__container {
+				height: 31px;
+				label,
+				input {
+					font-size: 20px;
+				}
+			}
+			&__rating {
+			    min-width: 30px;
+				&__selection {
+					padding: 1px 6px;
+					font: 800 20px system-ui;
+					border: 4px solid #666;
+					border-radius: 7px;
+				}
 			}
 		}
 		.curSearchTerm {

@@ -103,7 +103,7 @@
     "no-inline-comments": "off",
     "no-loop-func": "warn",
     "no-multi-spaces": "warn",
-    "no-nested-ternary": "warn",
+    "no-nested-ternary": 0,
     "no-unneeded-ternary": "warn",
     "no-use-before-define": "warn",
     "no-useless-concat": "warn",

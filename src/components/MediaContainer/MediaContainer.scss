@@ -3,7 +3,7 @@
 	min-width: 100%;
 	min-height: 100%;
 	padding: 60px 0;
-	overflow-y: scroll;
+	// overflow-y: scroll;
 	// display: flex;
 	// flex-wrap: wrap;
 	// justify-content: space-between;
@@ -40,13 +40,14 @@
 	  }
 	  &__info {
 	  	position: absolute;
-	  	bottom: -100%;
+	  	bottom: -20%;
 	  	width: 100%;
-	  	padding: 5px;
+	  	padding: 5px 0;
 	  	font: 800 10px system-ui;
 	  	opacity: .8;
 	  	background-color: #000;
 	  	color: #FFF;
+	  	text-align: center;
 	  	transition: 500ms ease;
 	  	border: none;
 	  	&:focus {

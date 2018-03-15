@@ -23,6 +23,9 @@
 	    	color: #FC4107;
 	    }
 	  }
+	  &__current {
+	  	text-align: center;
+	  }
 	}
 
 	&.page__all {
@@ -33,5 +36,12 @@
 				display: none;
 			}
 		}
+	}
+}
+
+@media (max-width: 855px) {
+	.pagination {
+	  padding: 12px 0;
+	  font: 800 14px system-ui;
 	}
 }
