@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { search } from './../../actions/search';
 import { connect } from 'react-redux';
-
+import Pagination from './../Pagination/Pagination';
 import './MediaContainer.css';
 
 class MediaContainer extends Component {
@@ -31,7 +31,8 @@ class MediaContainer extends Component {
 	}
 
 	componentDidMount() {
-		this.props.search();
+    // LOAD TRENDING IF THERE IS NO PREVIOUS SEARCH
+		if(!this.props.lastSearchTerm) this.props.search();
 		document.addEventListener("scroll", this.onScroll);
 	}
 	componentWillUnmount() {
@@ -55,13 +56,15 @@ class MediaContainer extends Component {
 		return (
 			displayKeys.map((key, i) => {
 					const imgSize = searchResultData[key].images.fixed_height;
-					const styleObj = { "backgroundImage": `url(${i > this.state.topLimit && i < this.state.bottomLimit ? imgSize.url : ''})`};
+          const imgSrc = i > this.state.topLimit && i < this.state.bottomLimit ? imgSize.url : '';
+					const styleObj = { "backgroundImage": `url(${imgSrc})`};
 					const beenCopied = this.state.copied === key ? 'copied' : '';
 					return (<div className={`img__wrapper ${beenCopied}`}
 												style={styleObj}
 												alt=""
 												data-key={key}
 												key={i+imgSize.url}>
+                      <div className="img__count">{i}</div>
 											<input className="img__info"
 															readOnly
 															onMouseDown={this.onCopy}
@@ -100,12 +103,15 @@ class MediaContainer extends Component {
 
 	render() {
 		return (
+      <React.Fragment>
 			<div className="mediaContainer" ref={(el) => this.mediaContainer = el}>
-				{this.props.count === 0 && 
+				{!this.props.count && 
 					<div className="oops">NO RESULTS</div>
 				}
 				{this.makeDisplay()}
 			</div>
+      <Pagination />
+      </React.Fragment>
 		);
 	}
 }

@@ -26,6 +26,13 @@
       right: 5px;
       font: 800 12px system-ui;
       color: #FFF; }
+  .mediaContainer .img__count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font: 800 10px system-ui;
+    color: #333;
+    z-index: -1; }
   .mediaContainer .img__info {
     position: absolute;
     bottom: -20%;

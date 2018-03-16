@@ -12,7 +12,7 @@ const initialState = {
 	hasPagination: true
 };
 
-// ADD RESPONSE TO APPROPRIATE COLLECTION
+// ADD RESPONSE DATA TO APPROPRIATE COLLECTION
 function makeDataCollection(term, pagination, data, stateCollection) {
 	let updatedCollection = {};
 	updatedCollection[term] = stateCollection[term] || {};

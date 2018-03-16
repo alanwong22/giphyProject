@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { search } from './../../actions/search';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import './searchBar.css';
 
 class SearchBar extends Component {
@@ -12,6 +13,7 @@ class SearchBar extends Component {
 		this.state = {
 			isActive: '',
 			curSearch: '',
+      newSearch: false,
       ratings: ['G','PG','PG-13','R'],
       curRating: 'G',
       openRatings: false
@@ -20,7 +22,10 @@ class SearchBar extends Component {
 		this.onClose = this.onClose.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 	}
-
+  componentDidUpdate(prevProps, prevState) {
+    
+    if(this.state.newSearch) this.setState({newSearch: false});
+  }
   onFocus() {
     this.searchInput.value = this.state.curSearch;
     this.setState({isActive: 'active'});
@@ -35,7 +40,7 @@ class SearchBar extends Component {
       this.props.search(this.searchInput.value, 0, this.state.curRating);
       this.searchInput.value = '';
       this.searchInput.blur();
-      this.setState({isActive: '', curSearch: ''});
+      this.setState({isActive: '', curSearch: '', newSearch: true});
     }
   }
   handleRating = (el) => {
@@ -47,8 +52,9 @@ class SearchBar extends Component {
     }
   }
   render() {
-		const { isActive, ratings, curRating, openRatings } = this.state;
+		const { isActive, ratings, curRating, openRatings, newSearch } = this.state;
     let curSubject = 'Trending';
+    
     if(this.props.lastSearchTerm) curSubject = `"${this.props.lastSearchTerm}"`;
     return (
       <div className={`searchBar ${isActive}`}>
@@ -60,6 +66,7 @@ class SearchBar extends Component {
                  onMouseDown={() => {
                   this.onClose();
                   this.props.search(term, 0, curRating);
+                  this.setState({newSearch: true});
                   }
                 }
             >{term}</div>
@@ -96,6 +103,9 @@ class SearchBar extends Component {
 				<div className="search__current">
 					<span>{curSubject}</span>
 				</div>
+        {newSearch && (
+          <Redirect to='/'/>
+        )}
       </div>
     );
   }
@@ -111,7 +121,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 SearchBar.defaultProps = {
-  lastSearchTerm: ''
+
 };
 
 SearchBar.propTypes = {
@@ -120,4 +130,4 @@ SearchBar.propTypes = {
   search: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
