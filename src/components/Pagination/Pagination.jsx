@@ -15,7 +15,7 @@ class Pagination extends Component {
 			const totalPages = Math.floor(total_count/count);
 
 			return (
-				<div className={`pagination ${count === 0 ? 'hide' : ''} ${this.props.hasPagination ? '' : 'page__all'}`}>
+				<div className={`pagination ${!count ? 'hide' : ''} ${this.props.hasPagination ? '' : 'page__all'}`}>
           
           <div className="page__prev"
             onClick={() => this.props.search(this.props.lastSearchTerm, offset-count)}>
