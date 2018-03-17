@@ -21,16 +21,19 @@ class SearchBar extends Component {
 		this.onFocus = this.onFocus.bind(this);
 		this.onClose = this.onClose.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+    this.handleRating = this.handleRating.bind(this);
 	}
   componentDidUpdate(prevProps, prevState) {
-    
+    // RESETS FLAG FOR REDIRECT AFTER SEARCH
     if(this.state.newSearch) this.setState({newSearch: false});
   }
   onFocus() {
+    // EXPAND OVERLAY
     this.searchInput.value = this.state.curSearch;
     this.setState({isActive: 'active'});
   }
   onClose() {
+    // COLLAPSE OVERLAY ON SUBMIT OR BLUR
     this.setState({isActive: '', curSearch: this.searchInput.value});
     this.searchInput.value = '';
   }
@@ -43,7 +46,8 @@ class SearchBar extends Component {
       this.setState({isActive: '', curSearch: '', newSearch: true});
     }
   }
-  handleRating = (el) => {
+
+  handleRating(el) {
     const _rating = el.currentTarget.innerText;
     if(_rating === this.state.curRating) {
       this.setState({openRatings: true});
@@ -54,7 +58,6 @@ class SearchBar extends Component {
   render() {
 		const { isActive, ratings, curRating, openRatings, newSearch } = this.state;
     let curSubject = 'Trending';
-    
     if(this.props.lastSearchTerm) curSubject = `"${this.props.lastSearchTerm}"`;
     return (
       <div className={`searchBar ${isActive}`}>

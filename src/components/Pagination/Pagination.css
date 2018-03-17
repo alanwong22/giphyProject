@@ -16,7 +16,7 @@
     padding: 0 20px;
     transition: 500ms ease; }
     .pagination .page__next:hover, .pagination .page__prev:hover, .pagination .page__show__all:hover {
-      color: #FC4107; }
+      color: #fc4107; }
   .pagination .page__current {
     text-align: center; }
   .pagination.page__all {

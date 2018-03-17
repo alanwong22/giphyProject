@@ -1,4 +1,4 @@
-$orange: #FC4107;
+$orange: #fc4107;
 
 .searchBar {
 	position: fixed;
@@ -16,7 +16,7 @@ $orange: #FC4107;
 	&.active {
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0,0,0,.85);
+		background-color: rgba(0, 0, 0, 0.85);
 		.search {
 			&__wrapper {
 				justify-content: center;
@@ -43,6 +43,7 @@ $orange: #FC4107;
 				right: 20px;
 			}
 			&__rating,
+			&__info,
 			&__current {
 				display: none;
 			}
@@ -116,8 +117,8 @@ $orange: #FC4107;
 			transition: 500ms ease-in;
 
 			&:hover {
-				color: #FFF;
-				border: thin solid #FFF;
+				color: #fff;
+				border: thin solid #fff;
 				background-color: $orange;
 				transition: 300ms ease;
 			}
@@ -127,7 +128,7 @@ $orange: #FC4107;
 				&:hover {
 					color: #000;
 					border: thin solid #000;
-					background-color: #FFF;
+					background-color: #fff;
 					transition: 300ms ease;
 				}
 			}
@@ -161,7 +162,7 @@ $orange: #FC4107;
 			bottom: 4px;
 			left: 20px;
 			font: 800 50px system-ui;
-			color: #FFF;
+			color: #fff;
 			span {
 				color: $orange;
 			}
@@ -178,6 +179,7 @@ $orange: #FC4107;
 	    border-radius: 10px;
 	    line-height: 1;
 	    cursor: pointer;
+	    text-decoration: none;
 		}
 		&__rating {
 			position: relative;

@@ -80,9 +80,9 @@ class MediaContainer extends Component {
 		if(this.scrollInterval) clearInterval(this.scrollInterval);
 		this.scrollInterval = setTimeout(() => {
 			const rowsScrolled = Math.floor(window.scrollY/200);
-			const perRow = window.innerWidth < 455 ? 1 :
-                     window.innerWidth < 655 ? 2 :
-                     window.innerWidth < 855 ? 3 :
+			const perRow = window.innerWidth < 455  ? 1 :
+                     window.innerWidth < 655  ? 2 :
+                     window.innerWidth < 855  ? 3 :
                      window.innerWidth < 1100 ? 4
                                               : 5;
 			// IMAGES WITH A HIGHER INDEX THAN TOPLIMIT ARE VISIBLE

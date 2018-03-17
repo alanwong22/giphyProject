@@ -61,7 +61,7 @@
     "max-len": [
       "warn",
       {
-        "code": 100,
+        "code": 150,
         "tabWidth": 2
       }
     ],
@@ -102,7 +102,7 @@
     "no-implicit-globals": "warn",
     "no-inline-comments": "off",
     "no-loop-func": "warn",
-    "no-multi-spaces": "warn",
+    "no-multi-spaces": 0,
     "no-nested-ternary": 0,
     "no-unneeded-ternary": "warn",
     "no-use-before-define": "warn",

@@ -10,16 +10,16 @@ export const search = (str, offset = 0, rating = 'G') => {
     });
     
     // SWITCHES BETWEEN TRENDING OR SEARCH CALLS
-		let _getURL = `https://api.giphy.com/v1/gifs/`;
-		_getURL += (!str) ? 'trending' : 'search';
-		_getURL += `?api_key=${process.env.REACT_APP_KEY}
+		let getURL = `https://api.giphy.com/v1/gifs/`;
+		getURL += (!str) ? 'trending' : 'search';
+		getURL += `?api_key=${process.env.REACT_APP_KEY}
 								&limit=25
 								&offset=${offset}
 								&rating=${rating}
 								&lang=en`;
-		if(str) _getURL += `&q=${str}`;
+		if(str) getURL += `&q=${str}`;
 
-		axios.get(_getURL)
+		axios.get(getURL)
     .then(res => {
       if(str) {
         dispatch({

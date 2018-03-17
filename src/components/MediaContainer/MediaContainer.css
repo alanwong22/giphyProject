@@ -25,7 +25,7 @@
       bottom: 4px;
       right: 5px;
       font: 800 12px system-ui;
-      color: #FFF; }
+      color: #fff; }
   .mediaContainer .img__count {
     position: absolute;
     bottom: 0;
@@ -39,9 +39,9 @@
     width: 100%;
     padding: 5px 0;
     font: 800 10px system-ui;
-    opacity: .8;
+    opacity: 0.8;
     background-color: #000;
-    color: #FFF;
+    color: #fff;
     text-align: center;
     transition: 500ms ease;
     border: none; }

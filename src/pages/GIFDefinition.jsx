@@ -6,7 +6,7 @@ const GIFDefinition = () => (
 					height="315"
 					title="YT"
 					src="https://www.youtube.com/embed/CBtKxsuGvko?rel=0&amp;start=55"
-					framebBrder="0"
+					frameBorder="0"
 					allow="autoplay; encrypted-media"
 					allowFullScreen></iframe>
 		<h1>GIF</h1>

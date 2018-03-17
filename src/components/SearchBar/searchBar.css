@@ -31,7 +31,7 @@
       display: block; }
     .searchBar.active .search__history {
       right: 20px; }
-    .searchBar.active .search__rating, .searchBar.active .search__current {
+    .searchBar.active .search__rating, .searchBar.active .search__info, .searchBar.active .search__current {
       display: none; }
   .searchBar .search__wrapper {
     position: relative;
@@ -90,16 +90,16 @@
     cursor: pointer;
     transition: 500ms ease-in; }
     .searchBar .search__button:hover {
-      color: #FFF;
-      border: thin solid #FFF;
-      background-color: #FC4107;
+      color: #fff;
+      border: thin solid #fff;
+      background-color: #fc4107;
       transition: 300ms ease; }
     .searchBar .search__button.cancel {
       bottom: -39px; }
       .searchBar .search__button.cancel:hover {
         color: #000;
         border: thin solid #000;
-        background-color: #FFF;
+        background-color: #fff;
         transition: 300ms ease; }
   .searchBar .search__history {
     position: absolute;
@@ -115,7 +115,7 @@
     transition: 500ms ease;
     cursor: pointer; }
     .searchBar .search__rerun:hover {
-      color: #FC4107;
+      color: #fc4107;
       opacity: 1; }
   .searchBar .search__label {
     font: 800 40px system-ui;
@@ -126,9 +126,9 @@
     bottom: 4px;
     left: 20px;
     font: 800 50px system-ui;
-    color: #FFF; }
+    color: #fff; }
     .searchBar .search__current span {
-      color: #FC4107; }
+      color: #fc4107; }
   .searchBar .search__info {
     position: relative;
     top: 5px;
@@ -136,11 +136,12 @@
     padding: 8px 13px 4px;
     margin: 0 0 0 10px;
     font: 800 25px system-ui;
-    color: #FC4107;
+    color: #fc4107;
     border: 5px solid #666;
     border-radius: 10px;
     line-height: 1;
-    cursor: pointer; }
+    cursor: pointer;
+    text-decoration: none; }
   .searchBar .search__rating {
     position: relative;
     min-width: 50px; }
@@ -179,7 +180,7 @@
       .searchBar .search__rating__option.selected {
         position: relative;
         opacity: 1;
-        color: #FC4107;
+        color: #fc4107;
         display: block;
         z-index: 1; }
     .searchBar .search__rating__selected {
