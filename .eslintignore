@@ -1,4 +1,4 @@
 node_modules/*
-src/assets/*
+build/*
 src/registerServiceWorker.js
 *.ignore.js
